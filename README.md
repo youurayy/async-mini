@@ -44,4 +44,4 @@ The above code will print:
 	{ '0': null, '1': { '0': 'done 1', '1': 'done 2' } }
 	{ '0': null, '1': { one: 'done 1', two: 'done 2' } }
 
-Of course, the above two `.parallel()` calls should themselves be included managed by a `.series()` call, but this is omitted for the brevity of the exmaple.
+Of course, the above two `.parallel()` calls should themselves be inside a `.series()` call, but this is omitted for brevity of the exmaple.
