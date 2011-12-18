@@ -1,13 +1,13 @@
 # Common patterns for asynchronous code, minimalistic version (async-mini)
 
-If you only need async.series and async.parallel in the most simplest form, then this module is for you.
+If you only need `async.series()` and `async.parallel()` in the most simplest, stable and predictable form, then this module is for you.
 
 ## Usage
 
-	npm install async-mini.js
+	npm install async-mini
 
 ```js
-var async = require('/Users/ypocat/Github/async-mini');
+var async = require('async-mini');
 
 var funcs = [
 	function(cb) {
@@ -43,3 +43,5 @@ The above code will print:
 	{ '0': null, '1': [ 'done 1', 'done 2' ] }
 	{ '0': null, '1': { '0': 'done 1', '1': 'done 2' } }
 	{ '0': null, '1': { one: 'done 1', two: 'done 2' } }
+
+Of course, the above two `.parallel()` calls should themselves be included managed by a `.series()` call, but this is omitted for the brevity of the exmaple.
