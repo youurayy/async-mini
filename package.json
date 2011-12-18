@@ -1,0 +1,23 @@
+{
+	"author": "Juraj Vitko (ypocat.com)",
+	"name": "async-mini",
+	"description": "Common patterns for asynchronous code, minimalistic version",
+	"keywords": [ "asynchronous", "control", "flow" ],
+	"version": "0.1.0",
+	"homepage": "http://github.com/ypocat/async-mini",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/ypocat/async-mini.git"
+	},
+	"main": "./lib/async-mini.js",
+	"directories": {
+		"lib": "./lib"
+	},
+	"engines": {
+		"node": ">= 0.4.0"
+	},
+	"dependencies": {
+	},
+	"devDependencies": {
+	}
+}
