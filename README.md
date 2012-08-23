@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/ypocat/async-mini.png)](http://travis-ci.org/ypocat/async-mini)
 # Common patterns for asynchronous code, minimalistic version (async-mini)
 
 If you only need `async.series()` and `async.parallel()` in the most simplest, stable and predictable form, then this module is for you.
