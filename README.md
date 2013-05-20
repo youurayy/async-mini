@@ -1,8 +1,8 @@
-# Common patterns for asynchronous code, minimalistic version (async-mini)
+## Common patterns for asynchronous code, minimalistic version (async-mini)
 
 If you only need `async.series()` and `async.parallel()` in the most simplest, stable and predictable form, then this module is for you.
 
-Update for 2.x: `series()` now supports its first argument to be an object, in which case the result comes back as an object, keyed by the same keys as the argument — this is the same behavior as `parallel()` has. The usage with array is unaffected.
+Update for 2.x: `series()` now supports its first argument to be an object, in which case the result comes back as an object, keyed by the same keys as the argument — this is the same behavior as `parallel()` has. The usage with array is unaffected. This is a non-breaking change because previously `series()` only supported an array argument.
 
 ## Usage
 
