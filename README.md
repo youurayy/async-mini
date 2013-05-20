@@ -2,46 +2,71 @@
 
 If you only need `async.series()` and `async.parallel()` in the most simplest, stable and predictable form, then this module is for you.
 
+Update for 2.x: `series()` now supports its first argument to be an object, in which case the result comes back as an object, keyed by the same keys as the argument — this is the same behavior as `parallel()` has. The usage with array is unaffected.
+
 ## Usage
 
 	npm install async-mini
 
 ```js
-var async = require('async-mini');
+var async = require('./async-mini');
 
-var funcs = [
-	function(cb) {
-		cb(null, 'done 1');
-	},
-	function(cb) {
-		cb(null, 'done 2');
-	}
+var arr = [
+    function(cb) {
+        cb(null, 'arr 1');
+    },
+    function(cb) {
+        cb(null, 'arr 2');
+    }
 ];
 
-var funcs2 = {
-	one: function(cb) {
-		cb(null, 'done 1');
-	},
-	two: function(cb) {
-		cb(null, 'done 2');
-	}
+var obj = {
+    one: function(cb) {
+        cb(null, 'obj 1');
+    },
+    two: function(cb) {
+        cb(null, 'obj 2');
+    }
 };
 
-var cb = function(err, res) {
-	console.log(arguments);
-};
+async.series([
 
-async.series(funcs, cb);
+    function(cb) {
+        async.series(arr, cb);
+    },
+    function(cb) {
+        async.series(obj, cb);
+    },
+    function(cb) {
+        async.parallel(arr, cb);
+    },
+    function(cb) {
+        async.parallel(obj, cb);
+    }
 
-async.parallel(funcs, cb);
+], function(err, res) {
 
-async.parallel(funcs2, cb);
+    console.log(JSON.stringify(res, null, '  '));
+});
 ```
 
 The above code will print:
 
-	{ '0': null, '1': [ 'done 1', 'done 2' ] }
-	{ '0': null, '1': { '0': 'done 1', '1': 'done 2' } }
-	{ '0': null, '1': { one: 'done 1', two: 'done 2' } }
-
-Of course, the above two `.parallel()` calls should themselves be inside a `.series()` call, but this is omitted for brevity of the exmaple.
+	[
+	  [
+	    "arr 1",
+	    "arr 2"
+	  ],
+	  {
+	    "one": "obj 1",
+	    "two": "obj 2"
+	  },
+	  {
+	    "0": "arr 1",
+	    "1": "arr 2"
+	  },
+	  {
+	    "one": "obj 1",
+	    "two": "obj 2"
+	  }
+	]
